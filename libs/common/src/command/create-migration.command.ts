@@ -1,7 +1,6 @@
 import { Logger } from '@nestjs/common';
 import { execSync } from 'child_process';
 import { Command, CommandRunner, InquirerService, Question, QuestionSet } from 'nest-commander';
-
 interface MigrationConfirmAnswer {
     confirm: boolean;
     migrationName: string;

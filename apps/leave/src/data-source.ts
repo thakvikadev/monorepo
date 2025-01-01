@@ -12,10 +12,6 @@ export const AppDataSource = new DataSource({
     schema: process.env.DB_SCHEMA,
     synchronize: true,
     logging: true,
-    entities: ['dist/**/*.entity.js'],
-    migrations: [
-        'dist/**/src/migrations/*Migration.js',
-        'dist/migrations/*Refactoring.js',
-        'dist/migrations/*Insertion.js',
-    ],
+    entities: [__dirname + '/entities/*.ts'],
+    migrations: [__dirname + '/migrations/*.ts'],
 });

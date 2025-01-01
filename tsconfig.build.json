@@ -1,4 +1,9 @@
 {
-  "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "module": "ESNext",
+        "outDir": "./dist"
+    },
+    "include": ["libs/common/src/**/*.ts", "apps/**/src/**/*.ts"],
+    "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }
