@@ -1,0 +1,74 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@constants/*": [
+        "src/constant/*"
+      ],
+      "@constants": [
+        "src/constant"
+      ],
+      "@controllers/*": [
+        "src/controller/*"
+      ],
+      "@controllers": [
+        "src/controller"
+      ],
+      "@entities/*": [
+        "src/io/entities/*"
+      ],
+      "@entities": [
+        "src/io/entities"
+      ],
+      "@helpers/*": [
+        "src/helper/*"
+      ],
+      "@helpers": [
+        "src/helper"
+      ],
+      "@repositories/*": [
+        "src/io/repository/*"
+      ],
+      "@repositories": [
+        "src/io/repository"
+      ],
+      "@services/*": [
+        "src/service/*"
+      ],
+      "@services": [
+        "src/service"
+      ],
+      "@configs/*": [
+        "src/_config/*"
+      ],
+      "@configs": [
+        "src/_config"
+      ],
+      "@app/common": [
+        "libs/common/src"
+      ],
+      "@app/common/*": [
+        "libs/common/src/*"
+      ]
+    }
+  }
+}
