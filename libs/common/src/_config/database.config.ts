@@ -11,7 +11,7 @@ export default (_entity: string) =>
         username: process.env.DB_USERNAME || 'root',
         password: process.env.DB_PASSWORD || '',
         useUTC: true,
-        synchronize: true,
+        synchronize: false,
         autoLoadEntities: true,
         logging: toBoolean(process.env.DB_LOGGING, false),
         entities: [_entity],

@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { DatabaseSchema } from './constant/enum';
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -10,9 +9,13 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USERNAME || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_DATABASE || 'test',
-    schema: process.env.SCHEMA_NAME || DatabaseSchema.LEAVE,
-    synchronize: false,
-    logging: false,
+    schema: process.env.DB_SCHEMA,
+    synchronize: true,
+    logging: true,
     entities: ['dist/**/*.entity.js'],
-    migrations: ['dist/migrations/*Migration.js', 'dist/migrations/*Refactoring.js', 'dist/migrations/*Insertion.js'],
+    migrations: [
+        'dist/**/src/migrations/*Migration.js',
+        'dist/migrations/*Refactoring.js',
+        'dist/migrations/*Insertion.js',
+    ],
 });

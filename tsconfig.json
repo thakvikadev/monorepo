@@ -63,10 +63,10 @@
       "@configs": [
         "src/_config"
       ],
-      "@app/common": [
+      "@libs/common": [
         "libs/common/src"
       ],
-      "@app/common/*": [
+      "@libs/common/*": [
         "libs/common/src/*"
       ]
     }

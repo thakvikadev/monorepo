@@ -44,7 +44,7 @@ export class CreateMigrationCommand extends CommandRunner {
             }
 
             // Step 3: Generate the migration
-            const command = `npx typeorm migration:create ./apps/leave/src/migrations/${migrationName}`;
+            const command = `npx typeorm migration:create ./src/migrations/${migrationName}`;
 
             this.logger.log(`Generating migration: ${migrationName}`);
             execSync(command, { stdio: 'inherit' });
