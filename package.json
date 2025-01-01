@@ -23,7 +23,8 @@
     "migration:run": "ts-node migration-cli.ts migration run",
     "migration:revert": "ts-node migration-cli.ts migration revert",
     "migration:create": "ts-node migration-cli.ts migration create",
-    "migration:show": "ts-node migration-cli.ts migration show"
+    "migration:show": "ts-node migration-cli.ts migration show",
+    "migration:create-schema": "ts-node migration-cli.ts migration create-schema"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.15",

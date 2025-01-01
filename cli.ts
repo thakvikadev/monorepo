@@ -146,12 +146,11 @@ enum ACTION {
   CREATE = 'create',
   SHOW= 'show',
   CREATE_SCHEMA = 'create-schema',
-  SEED = 'seed'
 }
 
 
 program
-  .command('migration')
+  .command('cli')
   .description('CLI for migrations')
   .argument('<action>', 'migration action: generate, run, revert, create')
   .action((action) => {
