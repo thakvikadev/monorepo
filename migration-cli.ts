@@ -98,6 +98,21 @@ const promptFunc = async (action: ACTION) => {
           );
         });
       }
+      if (action == ACTION.SHOW) {
+        // Show migration
+        return spawn(
+          'npm',
+          [
+            'run',
+            'typeorm',
+            'migration:show',
+            '--',
+            '-d',
+            `apps/${answers.project}/src/database/ormconfig.ts`,
+          ],
+          { stdio: 'inherit' },
+        );
+      }
     })
     .catch((error) => {
       if (error.isTtyError) {
@@ -113,6 +128,7 @@ enum ACTION {
   RUN = 'run',
   REVERT = 'revert',
   CREATE = 'create',
+  SHOW= 'show'
 }
 
 program
@@ -124,7 +140,8 @@ program
       action !== ACTION.GENERATE &&
       action !== ACTION.RUN &&
       action !== ACTION.REVERT &&
-      action !== ACTION.CREATE
+      action !== ACTION.CREATE &&
+      action !== ACTION.SHOW
     ) {
       console.log('Invalid action');
       return;
