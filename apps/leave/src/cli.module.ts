@@ -6,6 +6,7 @@ import {
     MigrationNameQuestion,
 } from './command/create-migration.command';
 import { ConfirmQuestion, CreateSchemaCommand } from './command/create-schema.command';
+import { SeedQuestion, StakeholderCommand } from './command/seed-stakeholder.command';
 
 @Module({
     imports: [AppModule],
@@ -15,6 +16,8 @@ import { ConfirmQuestion, CreateSchemaCommand } from './command/create-schema.co
         CreateMigrationCommand,
         MigrationNameQuestion,
         ConfirmCreateMigrationQuestion,
+        StakeholderCommand,
+        SeedQuestion
     ],
 })
 export class CliModule {}

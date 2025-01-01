@@ -81,7 +81,7 @@ const promptFunc = async (action: ACTION) => {
             name: 'migrationName',
             message: 'Migration name',
           },
-        ]).then((fileName) => {
+        ]).then(({migrationName}) => {
           return spawn(
             'npm',
             [
@@ -89,7 +89,7 @@ const promptFunc = async (action: ACTION) => {
               'typeorm',
               'migration:create',
               '--',
-              `apps/${answers.project}/src/database/migrations/${fileName.migrationName}`,
+              `apps/${answers.project}/src/database/migrations/${migrationName}`,
               '--',
               '-d',
               `apps/${answers.project}/src/database/ormconfig.ts`,
@@ -129,6 +129,29 @@ const promptFunc = async (action: ACTION) => {
           { stdio: 'inherit' },
         );
       }
+      if (action == ACTION.SEED) {
+        const cli = `apps/${answers.project}/src/main-cli.ts`;
+        return prompt([
+          {
+            type: 'select',
+            name: 'commander',
+            message: 'Commender name?',
+            choices: commanders,
+          },
+        ]).then(({commander}) => {
+          return spawn(
+            'npx',
+            [
+              'ts-node',
+              cli,
+              '--',
+              commander,
+            ],
+            { stdio: 'inherit' },
+          );
+        });
+        
+      }
     })
     .catch((error) => {
       if (error.isTtyError) {
@@ -149,6 +172,8 @@ enum ACTION {
   SEED = 'seed'
 }
 
+const commanders = ["seed-stakeholder","create-schema","create-migration"]
+
 
 program
   .command('migration')
@@ -161,7 +186,8 @@ program
       action !== ACTION.REVERT &&
       action !== ACTION.CREATE &&
       action !== ACTION.SHOW &&
-      action !== ACTION.CREATE_SCHEMA
+      action !== ACTION.CREATE_SCHEMA &&
+      action !== ACTION.SEED
     ) {
       console.log('Invalid action');
       return;
@@ -171,3 +197,5 @@ program
   });
 
 program.parse(process.argv);
+
+
