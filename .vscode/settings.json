@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "editor.rulers": [120],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "cSpell.words": ["typeorm", "nestjs", "exceljs", "ormconfig"]
+}
