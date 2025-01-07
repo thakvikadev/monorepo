@@ -44,14 +44,14 @@ export class CreateMigrationCommand extends CommandRunner {
       }
 
       // Step 3: Generate the migration
-      const command = `npx typeorm migration:create ./src/database/migrations/${migrationName}`;
+      const command = `npx typeorm migration:create apps/approval/src/database/migrations/${migrationName}`;
 
       this.logger.log(`Generating migration: ${migrationName}`);
       execSync(command, { stdio: 'inherit' });
 
       this.logger.log(`Migration "${migrationName}" created successfully.`);
     } catch (error) {
-      this.logger.error('Error creating migration:', error.message);
+      this.logger.error('Error creating migration:', error);
     }
   }
 }

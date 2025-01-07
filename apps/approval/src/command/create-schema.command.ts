@@ -26,7 +26,7 @@ export class CreateSchemaCommand extends CommandRunner {
         return;
       }
 
-      await this.manager.query(`CREATE SCHEMA IF NOT EXISTS ${process.env.DB_SCHEMA}}`);
+      await this.manager.query(`CREATE SCHEMA IF NOT EXISTS ${process.env.DB_SCHEMA}`);
       this.logger.log(`Schema ${process.env.DB_SCHEMA} has been created successfully.`);
     } catch (error) {
       this.logger.error('Error creating schema:', error);

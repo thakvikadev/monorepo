@@ -4,6 +4,7 @@ import { readdirSync } from 'fs';
 import * as inquirer from 'inquirer';
 
 const program = new Command();
+const commanders = ['create-schema', 'create-migration'];
 
 enum ACTION {
   GENERATE = 'generate',
@@ -14,8 +15,6 @@ enum ACTION {
   CREATE_SCHEMA = 'create-schema',
   SEED = 'seed',
 }
-
-const commanders = ['create-schema', 'create-migration'];
 
 const getDirectories = (path: string): string[] =>
   readdirSync(path, { withFileTypes: true })
@@ -62,6 +61,7 @@ const handleMigrationAction = async (action: ACTION, project: string) => {
         'migration:create',
         '--',
         `apps/${project}/src/database/migrations/${migrationName}`,
+        '--',
         '-d',
         `apps/${project}/src/database/ormconfig.ts`,
       ]);

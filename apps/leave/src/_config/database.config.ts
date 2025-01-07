@@ -4,7 +4,7 @@ import { join } from 'path';
 import { Migration } from '../io/entities';
 
 dotenv.config({
-  path: join(process.cwd(), process.env.PROJECT_ENV_FILE || '.env'),
+  path: join(__dirname, '../../.env'),
 });
 
 export default (_entity: string) =>
@@ -12,9 +12,10 @@ export default (_entity: string) =>
     type: process.env.DB_DRIVER || 'postgres',
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT, 10) || 3306,
-    database: process.env.DB_DATABASE || 'test',
-    username: process.env.DB_USERNAME || 'root',
-    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_DATABASE,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    schema: process.env.DB_SCHEMA,
     useUTC: true,
     synchronize: false,
     autoLoadEntities: true,

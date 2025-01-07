@@ -7,20 +7,20 @@
   },
   "private": true,
   "license": "UNLICENSED",
+  "main": "dist/main.js",
   "workspaces": {
     "packages": [
       "./apps/*",
-      "./libs/*",
-      "./tools/eslint"
+      "./libs/*"
     ]
   },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start --watch",
-    "start:all": "concurrently -c \"cyan.bold, green.bold, blue.bold\" \"npm run start:leave\" \"npm run start:approval\"",
-    "start:leave": "PROJECT_ENV_FILE=apps/leave/.env nest start --watch",
-    "start:approval": "PROJECT_ENV_FILE=apps/approval/.env nest start --watch",
+    "start:dev": "concurrently -c \"cyan.bold, green.bold, blue.bold\" \"npm run leave\" \"npm run approval\"",
+    "leave": "PROJECT_ENV_FILE=apps/leave/.env nest start --watch",
+    "approval": "PROJECT_ENV_FILE=apps/approval/.env nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/leave/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -29,16 +29,15 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/leave/test/jest-e2e.json",
-    "typeorm:leave": "npm run build:libs && TS_NODE_PROJECT=./tsconfig.json ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d ./apps/leave/src/database/ormconfig.ts",
-    "main-cli": "TS_NODE_PROJECT=./tsconfig.json ts-node -r tsconfig-paths/register @apps/leave/src/main-cli.ts",
+    "main-cli": "TS_NODE_PROJECT=./tsconfig.json ts-node -r tsconfig-paths/register ./apps/*/*/main-cli.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:generate": "ts-node migration-cli.ts migration generate",
-    "migration:run": "ts-node migration-cli.ts migration run",
-    "migration:revert": "ts-node migration-cli.ts migration revert",
-    "migration:create": "ts-node migration-cli.ts migration create",
-    "migration:show": "ts-node migration-cli.ts migration show",
-    "migration:create-schema": "ts-node migration-cli.ts migration create-schema",
-    "migration:seed": "ts-node migration-cli.ts migration seed"
+    "m:generate": "ts-node migration-cli.ts migration generate",
+    "m:run": "ts-node migration-cli.ts migration run",
+    "m:revert": "ts-node migration-cli.ts migration revert",
+    "m:create": "ts-node migration-cli.ts migration create",
+    "m:show": "ts-node migration-cli.ts migration show",
+    "m:create-schema": "ts-node migration-cli.ts migration create-schema",
+    "m:seed": "ts-node migration-cli.ts migration seed"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.3",

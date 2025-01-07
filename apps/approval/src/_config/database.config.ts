@@ -1,19 +1,25 @@
-import { Migration } from '@approval/io/entities';
-import { toBoolean } from '@approval/utility/utils';
 import { registerAs } from '@nestjs/config';
+import * as dotenv from 'dotenv';
+import { join } from 'path';
+import { Migration } from '../io/entities';
 
-export default (entity: string) =>
+dotenv.config({
+  path: join(__dirname, '../../.env'),
+});
+export default (_entity: string) =>
   registerAs('database', () => ({
     type: process.env.DB_DRIVER || 'postgres',
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT, 10) || 3306,
-    database: process.env.DB_DATABASE || 'test',
-    username: process.env.DB_USERNAME || 'root',
-    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_DATABASE,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    schema: process.env.DB_SCHEMA,
     useUTC: true,
+    synchronize: true,
     autoLoadEntities: true,
-    logging: toBoolean(process.env.DB_LOGGING, false),
-    entities: [entity],
+    logging: false,
+    entities: [_entity],
   }));
 
 export const Entities = [Migration];

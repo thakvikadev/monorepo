@@ -1,8 +1,7 @@
-import databaseConfig, { Entities } from '@approval/_config/database.config';
-import { AppLoggerMiddleware } from '@libs/common/middleware/app-logger.middleware';
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import databaseConfig, { Entities } from './_config/database.config';
 import { AppController } from './controller';
 import { AppRepository } from './io/repository/app.repository';
 import { APP_SERVICE } from './service';
@@ -29,8 +28,4 @@ import { AppService } from './service/impl';
     AppRepository,
   ],
 })
-export class AppModule {
-  configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(AppLoggerMiddleware).forRoutes('*');
-  }
-}
+export class AppModule {}

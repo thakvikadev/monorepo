@@ -1,4 +1,3 @@
-import { toBoolean } from '@libs/common/utility/utils';
 import * as dotenv from 'dotenv';
 import { join } from 'path';
 import 'reflect-metadata';
@@ -20,5 +19,5 @@ export const dataSources = new DataSource({
   entities: [join(__dirname + '../../**/*.entity{.ts,.js}')],
   migrations: [join(__dirname + '../../database/migrations/*{.ts,.js}')],
   synchronize: false,
-  logging: toBoolean(process.env.DB_LOGGING, false),
+  logging: false,
 });
