@@ -6,17 +6,17 @@ import { isString as _isString } from 'class-validator';
  * @returns string in kebab case
  */
 export const toKebab = (str: string): string => {
-    return str
-        .split('')
-        .map((letter) => {
-            if (/[A-Z]/.test(letter)) {
-                return ` ${letter.toLowerCase()}`;
-            }
-            return letter;
-        })
-        .join('')
-        .trim()
-        .replace(/[_\s]+/g, '-');
+  return str
+    .split('')
+    .map((letter) => {
+      if (/[A-Z]/.test(letter)) {
+        return ` ${letter.toLowerCase()}`;
+      }
+      return letter;
+    })
+    .join('')
+    .trim()
+    .replace(/[_\s]+/g, '-');
 };
 
 /**
@@ -26,7 +26,7 @@ export const toKebab = (str: string): string => {
  * @returns string in snake case
  */
 export const toSnakeCase = (str: string): string => {
-    return toKebab(str).split('-').join('_');
+  return toKebab(str).split('-').join('_');
 };
 
 /**
@@ -36,15 +36,15 @@ export const toSnakeCase = (str: string): string => {
  * @returns string in camel case
  */
 export const toCamelCase = (str: string): string => {
-    return toKebab(str)
-        .split('-')
-        .map((word, index) => {
-            if (index === 0) {
-                return word;
-            }
-            return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
-        })
-        .join('');
+  return toKebab(str)
+    .split('-')
+    .map((word, index) => {
+      if (index === 0) {
+        return word;
+      }
+      return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join('');
 };
 
 /**
@@ -53,10 +53,10 @@ export const toCamelCase = (str: string): string => {
  * @returns string
  */
 export const toFirstCamelCase = (str: string) => {
-    str = str.toLowerCase();
-    return str[0].toUpperCase() + str.slice(1);
+  str = str.toLowerCase();
+  return str[0].toUpperCase() + str.slice(1);
 };
 
 export const isString = (str: string | any) => {
-    return _isString(str);
+  return _isString(str);
 };
