@@ -1,11 +1,5 @@
 import { registerAs } from '@nestjs/config';
-import * as dotenv from 'dotenv';
-import { join } from 'path';
 import { Migration } from '../io/entities';
-
-dotenv.config({
-  path: join(__dirname, '../../.env'),
-});
 
 export default (_entity: string) =>
   registerAs('database', () => ({

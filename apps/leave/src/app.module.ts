@@ -12,6 +12,7 @@ import { AppService } from './service/impl/app.service';
   imports: [
     ConfigModule.forRoot({
       load: [databaseConfig(__dirname + '/**/*.entity{.ts,.js}')],
+      envFilePath: `${process.cwd()}/apps/leave/.env`,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
