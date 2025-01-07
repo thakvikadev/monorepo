@@ -8,10 +8,10 @@ import { toBoolean } from './utils';
  * @returns string of full url
  */
 export const toUrl = (path: string) => {
-    if (isEmpty(path)) {
-        return null;
-    }
-    return new URL(path, process.env.BASE_URL).toString();
+  if (isEmpty(path)) {
+    return null;
+  }
+  return new URL(path, process.env.BASE_URL).toString();
 };
 
 /**
@@ -20,10 +20,10 @@ export const toUrl = (path: string) => {
  * @returns a file url
  */
 export const toFileUrl = (uuid: string) => {
-    if (isEmpty(uuid)) {
-        return null;
-    }
-    return new URL(path.join(process.env.PATH_ATTACHMENT_FILES, uuid), process.env.BASE_ATTACHMENT_URL).toString();
+  if (isEmpty(uuid)) {
+    return null;
+  }
+  return new URL(path.join(process.env.PATH_ATTACHMENT_FILES, uuid), process.env.BASE_ATTACHMENT_URL).toString();
 };
 
 /**
@@ -32,17 +32,17 @@ export const toFileUrl = (uuid: string) => {
  * @returns a file url
  */
 export const toPreviewUrl = (uuid: string, size?: number, square = false) => {
-    if (isEmpty(uuid)) {
-        return null;
-    }
-    const url = new URL(
-        path.join(process.env.PATH_ATTACHMENT_FILES, uuid, 'preview'),
-        process.env.BASE_ATTACHMENT_URL,
-    ).toString();
-    return `${url}?${new URLSearchParams({
-        size: size || parseInt(process.env.ICON_PROFILE_SIZE, 10) || 64,
-        square: square || toBoolean(process.env.ICON_PROFILE_SQUARE, true),
-    } as Record<string, any>)}`;
+  if (isEmpty(uuid)) {
+    return null;
+  }
+  const url = new URL(
+    path.join(process.env.PATH_ATTACHMENT_FILES, uuid, 'preview'),
+    process.env.BASE_ATTACHMENT_URL,
+  ).toString();
+  return `${url}?${new URLSearchParams({
+    size: size || parseInt(process.env.ICON_PROFILE_SIZE, 10) || 64,
+    square: square || toBoolean(process.env.ICON_PROFILE_SQUARE, true),
+  } as Record<string, any>)}`;
 };
 
 /**
@@ -51,12 +51,12 @@ export const toPreviewUrl = (uuid: string, size?: number, square = false) => {
  * @returns url
  */
 export const toProfileUrl = (user: { gender?: string; fullName: string; profile: string; resize?: boolean }) => {
-    if (!user.profile) {
-        return getDefaultProfile(user);
-    }
-    return user.resize ? toPreviewUrl(user.profile) : toFileUrl(user.profile);
+  if (!user.profile) {
+    return getDefaultProfile(user);
+  }
+  return user.resize ? toPreviewUrl(user.profile) : toFileUrl(user.profile);
 };
 
 export const getDefaultProfile = (user: { gender?: string; fullName: string }) => {
-    return `https://api.dicebear.com/7.x/initials/svg?seed=${user.fullName}&backgroundType=solid,gradientLinear`;
+  return `https://api.dicebear.com/7.x/initials/svg?seed=${user.fullName}&backgroundType=solid,gradientLinear`;
 };

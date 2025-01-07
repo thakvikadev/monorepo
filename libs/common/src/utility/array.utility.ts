@@ -7,12 +7,12 @@ import { isArray as _isArray, arrayNotEmpty } from 'class-validator';
  * @returns group by key as object
  */
 export const groupBy = (list: any[], key: string) => {
-    return list.reduce((result, item) => {
-        const groupKey = item[key];
-        result[groupKey] = result[groupKey] || [];
-        result[groupKey].push(item);
-        return result;
-    }, {});
+  return list.reduce((result, item) => {
+    const groupKey = item[key];
+    result[groupKey] = result[groupKey] || [];
+    result[groupKey].push(item);
+    return result;
+  }, {});
 };
 
 /**
@@ -23,13 +23,13 @@ export const groupBy = (list: any[], key: string) => {
  * @returns boolean
  */
 export const distinct = (value, index, self) => {
-    return self.indexOf(value) === index;
+  return self.indexOf(value) === index;
 };
 
 export const isArray = (arr: any) => {
-    return _isArray(arr);
+  return _isArray(arr);
 };
 
 export const isEmpty = (arr: any) => {
-    return !arrayNotEmpty(arr);
+  return !arrayNotEmpty(arr);
 };

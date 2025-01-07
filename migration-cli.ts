@@ -4,7 +4,6 @@ import { readdirSync } from 'fs';
 import * as inquirer from 'inquirer';
 
 const program = new Command();
-
 enum ACTION {
   GENERATE = 'generate',
   RUN = 'run',
@@ -62,6 +61,7 @@ const handleMigrationAction = async (action: ACTION, project: string) => {
         'migration:create',
         '--',
         `apps/${project}/src/database/migrations/${migrationName}`,
+        '--',
         '-d',
         `apps/${project}/src/database/ormconfig.ts`,
       ]);

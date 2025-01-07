@@ -23,7 +23,9 @@
       "@leave": ["apps/leave/src"],
       "@leave/*": ["apps/leave/src/*"],
       "@approval": ["apps/approval/src"],
-      "@approval/*": ["apps/approval/src/*"]
+      "@approval/*": ["apps/approval/src/*"],
+      "@techie": ["apps/techie/src"],
+      "@techie/*": ["apps/techie/src/*"]
     }
   }
 }

@@ -1,5 +1,5 @@
 import { Migration } from '@approval/io/entities';
-import { toBoolean } from '@approval/utility/utils';
+import { toBoolean } from '@libs/common/utility/utils';
 import { registerAs } from '@nestjs/config';
 
 export default (entity: string) =>
