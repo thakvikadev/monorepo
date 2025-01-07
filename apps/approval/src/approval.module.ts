@@ -29,4 +29,4 @@ import { AppService } from './service/impl';
     AppRepository,
   ],
 })
-export class ApprvalModule {}
+export class ApprovalModule {}

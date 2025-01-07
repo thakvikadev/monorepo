@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
-import { AppModule } from './app.module';
 import {
-    ConfirmCreateMigrationQuestion,
-    CreateMigrationCommand,
-    MigrationNameQuestion,
+  ConfirmCreateMigrationQuestion,
+  CreateMigrationCommand,
+  MigrationNameQuestion,
 } from './command/create-migration.command';
 import { ConfirmQuestion, CreateSchemaCommand } from './command/create-schema.command';
+import { LeaveModule } from './leave.module';
 
 @Module({
-    imports: [AppModule],
-    providers: [
-        CreateSchemaCommand,
-        ConfirmQuestion,
-        CreateMigrationCommand,
-        MigrationNameQuestion,
-        ConfirmCreateMigrationQuestion,
-    ],
+  imports: [LeaveModule],
+  providers: [
+    CreateSchemaCommand,
+    ConfirmQuestion,
+    CreateMigrationCommand,
+    MigrationNameQuestion,
+    ConfirmCreateMigrationQuestion,
+  ],
 })
 export class CliModule {}

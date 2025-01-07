@@ -30,4 +30,4 @@ import { AppService } from './service/impl/app.service';
     AppRepository,
   ],
 })
-export class AppModule {}
+export class LeaveModule {}

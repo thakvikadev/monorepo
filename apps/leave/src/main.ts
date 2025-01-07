@@ -1,11 +1,11 @@
 import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { bold } from 'kleur';
-import { AppModule } from './app.module';
+import { LeaveModule } from './leave.module';
 
 async function bootstrap() {
   const logger = new Logger('HTTP');
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(LeaveModule);
 
   // Enable URI versioning with a default version
   app.enableVersioning({
