@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AppModule } from './app.module';
+import { ApprvalModule } from './approval.module';
 import {
   ConfirmCreateMigrationQuestion,
   CreateMigrationCommand,
@@ -8,7 +8,7 @@ import {
 import { ConfirmQuestion, CreateSchemaCommand } from './command/create-schema.command';
 
 @Module({
-  imports: [AppModule],
+  imports: [ApprvalModule],
   providers: [
     CreateSchemaCommand,
     ConfirmQuestion,

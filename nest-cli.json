@@ -3,7 +3,7 @@
     "sourceRoot": "apps/leave/src",
     "compilerOptions": {
         "webpack": true,
-        "tsConfigPath": "tsconfig.json"
+        "tsConfigPath": "apps/leave/tsconfig.app.json"
     },
     "monorepo": true,
     "root": "apps/leave",
